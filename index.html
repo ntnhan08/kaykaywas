@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KayKay Was - Mỳ Cay Hàn Quốc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Biến màu sắc */
+        :root {
+            --primary: #e63946; /* Đỏ cay */
+            --secondary: #f1faee; /* Trắng kem */
+            --dark: #1d3557; /* Xanh đậm */
+            --light: #a8dadc; /* Xanh nhạt */
+            --accent: #f4a261; /* Cam nhạt */
+            --text: #333333; /* Chữ chính */
+            --text-light: #666666; /* Chữ phụ */
+            --background: #ffffff; /* Nền */
+            --section-bg: #f8f9fa; /* Nền section */
+        }
+
+        /* Reset và cài đặt cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--dark);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--section-bg);
+        }
+
+        .menu-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .filter-btn.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item-image {
+            height: 200px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .menu-item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .menu-item-description {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .spice-level {
+            display: flex;
+        }
+
+        .spice-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 5px;
+        }
+
+        .spice-dot.active {
+            background-color: var(--primary);
+        }
+
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #c1121f;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s ease;
+            z-index: 1100;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .cart-items {
+            flex: 1;
+            margin-bottom: 30px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .quantity-value {
+            margin: 0 10px;
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #c1121f;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 2000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .filter-btn {
+                margin: 5px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Kay<span>Kay</span> Was</a>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#menu">Thực đơn</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Mỳ Cay Hàn Quốc KayKay Was</h1>
+            <p>Trải nghiệm hương vị mỳ cay chính gốc Hàn Quốc với nhiều cấp độ cay phù hợp với khẩu vị của bạn</p>
+            <a href="#menu" class="btn btn-primary">Đặt món ngay</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="container">
+            <h2 class="section-title">Thực Đơn</h2>
+            <div class="menu-filter">
+                <button class="filter-btn active" data-filter="all">Tất cả</button>
+                <button class="filter-btn" data-filter="my-cay">Mỳ Cay</button>
+                <button class="filter-btn" data-filter="topping">Topping</button>
+                <button class="filter-btn" data-filter="do-uong">Đồ uống</button>
+            </div>
+            <div class="menu-grid" id="menu-grid">
+                <!-- Menu items will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2 class="cart-title">Giỏ hàng</h2>
+            <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be loaded here by JavaScript -->
+        </div>
+        <div class="cart-total">
+            <span>Tổng cộng:</span>
+            <span id="cart-total-price">0₫</span>
+        </div>
+        <button class="checkout-btn" id="checkout-btn">Thanh toán</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Menu Data with illustrative images
+        const menuItems = [
+            {
+                id: 1,
+                name: "Mỳ Cay Cấp 1",
+                price: 45000,
+                image: "https://i.imgur.com/7Q1q8Jp.png",
+                description: "Mức cay nhẹ nhàng, phù hợp cho người mới bắt đầu",
+                category: "my-cay",
+                spiceLevel: 1
+            },
+            {
+                id: 2,
+                name: "Mỳ Cay Cấp 2",
+                price: 50000,
+                image: "https://i.imgur.com/KLmW5r2.png",
+                description: "Cay vừa phải, kích thích vị giác",
+                category: "my-cay",
+                spiceLevel: 2
+            },
+            {
+                id: 3,
+                name: "Mỳ Cay Cấp 3",
+                price: 55000,
+                image: "https://i.imgur.com/9zW8c8j.png",
+                description: "Cay đậm đà, thử thách cho người yêu cay",
+                category: "my-cay",
+                spiceLevel: 3
+            },
+            {
+                id: 4,
+                name: "Mỳ Cay Cấp 4",
+                price: 60000,
+                image: "https://i.imgur.com/1XqY7c2.png",
+                description: "Cay cực mạnh, chỉ dành cho người chịu cay giỏi",
+                category: "my-cay",
+                spiceLevel: 4
+            },
+            {
+                id: 5,
+                name: "Mỳ Cay Cấp 5",
+                price: 65000,
+                image: "https://i.imgur.com/5tQ8w9p.png",
+                description: "Cấp độ thách thức, cảnh báo cho người yếu tim",
+                category: "my-cay",
+                spiceLevel: 5
+            },
+            {
+                id: 6,
+                name: "Trứng non",
+                price: 15000,
+                image: "https://i.imgur.com/3qJ9Z8p.png",
+                description: "Trứng non tươi ngon",
+                category: "topping",
+                spiceLevel: 0
+            },
+            {
+                id: 7,
+                name: "Xúc xích Hàn Quốc",
+                price: 20000,
+                image: "https://i.imgur.com/8rq5Z8p.png",
+                description: "Xúc xích Hàn Quốc chính hiệu",
+                category: "topping",
+                spiceLevel: 0
+            },
+            {
+                id: 8,
+                name: "Phô mai Mozzarella",
+                price: 18000,
+                image: "https://i.imgur.com/2qJ9Z8p.png",
+                description: "Phô mai kéo sợi thơm ngon",
+                category: "topping",
+                spiceLevel: 0
+            },
+            {
+                id: 9,
+                name: "Nấm kim châm",
+                price: 12000,
+                image: "https://i.imgur.com/4qJ9Z8p.png",
+                description: "Nấm kim châm tươi giòn",
+                category: "topping",
+                spiceLevel: 0
+            },
+            {
+                id: 10,
+                name: "Trà đào",
+                price: 25000,
+                image: "https://i.imgur.com/6qJ9Z8p.png",
+                description: "Trà đào thanh mát giải cay",
+                category: "do-uong",
+                spiceLevel: 0
+            },
+            {
+                id: 11,
+                name: "Sữa chua uống",
+                price: 20000,
+                image: "https://i.imgur.com/7qJ9Z8p.png",
+                description: "Sữa chua uống Hàn Quốc",
+                category: "do-uong",
+                spiceLevel: 0
+            },
+            {
+                id: 12,
+                name: "Coca Cola",
+                price: 15000,
+                image: "https://i.imgur.com/8qJ9Z8p.png",
+                description: "Nước ngọt Coca Cola",
+                category: "do-uong",
+                spiceLevel: 0
+            }
+        ];
+
+        // DOM Elements
+        const menuGrid = document.getElementById('menu-grid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const notification = document.getElementById('notification');
+
+        // Cart State
+        let cart = [];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            displayMenuItems(menuItems);
+            setupEventListeners();
+            updateCart();
+        });
+
+        // Display menu items
+        function displayMenuItems(items) {
+            menuGrid.innerHTML = '';
+            
+            if (items.length === 0) {
+                menuGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">Không có món nào trong danh mục này.</p>';
+                return;
+            }
+            
+            items.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.classList.add('menu-item');
+                menuItem.setAttribute('data-category', item.category);
+                
+                // Create spice level dots
+                let spiceDots = '';
+                for (let i = 1; i <= 5; i++) {
+                    spiceDots += `<div class="spice-dot ${i <= item.spiceLevel ? 'active' : ''}"></div>`;
+                }
+                
+                menuItem.innerHTML = `
+                    <div class="menu-item-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(item.name)}'">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">${item.name}</h3>
+                            <div class="menu-item-price">${formatPrice(item.price)}</div>
+                        </div>
+                        <p class="menu-item-description">${item.description}</p>
+                        <div class="menu-item-footer">
+                            <div class="spice-level">
+                                ${spiceDots}
+                            </div>
+                            <button class="add-to-cart" data-id="${item.id}">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                `;
+                
+                menuGrid.appendChild(menuItem);
+            });
+            
+            // Add event listeners to add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    addToCart(id);
+                });
+            });
+        }
+
+        // Filter menu items
+        function setupEventListeners() {
+            // Filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    if (filter === 'all') {
+                        displayMenuItems(menuItems);
+                    } else {
+                        const filteredItems = menuItems.filter(item => item.category === filter);
+                        displayMenuItems(filteredItems);
+                    }
+                });
+            });
+            
+            // Cart toggle
+            cartIcon.addEventListener('click', () => {
+                cartModal.classList.add('open');
+                overlay.classList.add('active');
+            });
+            
+            closeCart.addEventListener('click', () => {
+                cartModal.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+            
+            overlay.addEventListener('click', () => {
+                cartModal.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('show');
+                });
+            });
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    showNotification('Giỏ hàng của bạn đang trống!');
+                    return;
+                }
+                
+                // In a real application, you would send the order to a server
+                // For this demo, we'll just show a confirmation message
+                const orderDetails = cart.map(item => 
+                    `${item.name} x${item.quantity} - ${formatPrice(item.price * item.quantity)}`
+                ).join('\n');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                alert(`Đơn hàng của bạn:\n\n${orderDetails}\n\nTổng cộng: ${formatPrice(total)}\n\nCảm ơn bạn đã đặt hàng! Chúng tôi sẽ liên hệ với bạn sớm nhất để xác nhận đơn hàng.`);
+                
+                // Clear cart after order
+                cart = [];
+                updateCart();
+                cartModal.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        }
+
+        // Add item to cart
+        function addToCart(id) {
+            const item = menuItems.find(item => item.id === id);
+            const existingItem = cart.find(cartItem => cartItem.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...item,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`Đã thêm ${item.name} vào giỏ hàng`);
+        }
+
+        // Update cart display
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">Giỏ hàng của bạn đang trống</div>';
+                cartTotalPrice.textContent = '0₫';
+                return;
+            }
+            
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80x80?text=${encodeURIComponent(item.name)}'">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${formatPrice(item.price)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                            <span class="quantity-value">${item.quantity}</span>
+                            <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                        </div>
+                        <button class="remove-item" data-id="${item.id}">Xóa</button>
+                    </div>
+                `;
+                
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            // Update total price
+            cartTotalPrice.textContent = formatPrice(totalPrice);
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn.increase').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    const item = cart.find(item => item.id === id);
+                    item.quantity += 1;
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.decrease').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        cart = cart.filter(cartItem => cartItem.id !== id);
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    cart = cart.filter(item => item.id !== id);
+                    updateCart();
+                });
+            });
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Format price
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(price);
+        }
+    </script>
+</body>
+</html>
